@@ -8,19 +8,22 @@ list_students = list(students)
 list_students.sort()
 print(list_students)
 
-avg_list_grades = []
-for student_grade in grades:
-    avg_grade = sum(student_grade) / len(student_grade)
-    avg_list_grades.append(round(avg_grade,1))
+def complete_dict(*, grades: list, students: list) -> dict[str, float]:
+    list_avg_grades = []
+    for student_grade in grades:
+        avg_grade = sum(student_grade) / len(student_grade)
+        list_avg_grades.append(round(avg_grade, 1))
 
-print(avg_list_grades)
+    dict_students = {}
+    for i in range(len(students)):
+        dict_students[list_students[i]] = list_avg_grades[i]
+
+    return dict_students
 
 
-dict_students ={}
-for i in range(len(list_students)):
-    dict_students[list_students[i]] = avg_list_grades[i]
+print('Словарь средних оценок студентов:', complete_dict(grades=grades, students=list_students))
+print(type(complete_dict(grades=grades, students=list_students)))
 
-print(dict_students)
 
 def nothing():
     pass
